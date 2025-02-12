@@ -1,5 +1,5 @@
 import { findIssues, graphQLResponseSchema } from './GraphQLStandardSchema.ts'
-import { assertEquals, assertRejects } from '@std/assert'
+import { assertEquals, assertRejects } from 'jsr:@std/assert'
 import type { StandardSchemaV1 } from './StandardSchemaV1.ts'
 
 // Helper function from https://standardschema.dev/ to validate an input

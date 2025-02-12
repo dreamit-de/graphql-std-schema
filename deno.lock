@@ -127,8 +127,7 @@
   },
   "workspace": {
     "dependencies": [
-      "jsr:@deno/dnt@0.41.3",
-      "jsr:@std/assert@1.0.11"
+      "jsr:@deno/dnt@0.41.3"
     ]
   }
 }
