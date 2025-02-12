@@ -9,7 +9,7 @@ await build({
    shims: {
       // see JS docs for overview and more options
       deno: {
-         test: 'dev'
+         test: 'dev',
       },
    },
    filterDiagnostic(diagnostic) {
