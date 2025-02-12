@@ -12,13 +12,13 @@ await build({
    },
    filterDiagnostic(diagnostic) {
       if (
-        diagnostic.file?.fileName.contains("src/deps/jsr.io/@std/assert")
+         diagnostic.file?.fileName.includes('src/deps/jsr.io/@std/assert')
       ) {
-        return false; // ignore all diagnostics in this file
+         return false // ignore all diagnostics in this file
       }
       // etc... more checks here
-      return true;
-    },
+      return true
+   },
    package: {
       // package.json properties
       name: '@dreamit/graphql-std-schema',
