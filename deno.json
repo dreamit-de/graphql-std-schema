@@ -1,0 +1,28 @@
+{
+   "name": "@dreamit/graphql-std-schema",
+   "version": "0.1.0",
+   "exports": "./index.ts",
+   "tasks": {
+      "coverage": "deno test --coverage=covresults && deno coverage --detailed covresults",
+      "dnt": "deno run -A scripts/build_npm.ts 0.1.0",
+      "format": "deno fmt --options-indent-width=3 --options-single-quote --options-no-semicolons=true",
+      "lint": "deno lint",
+      "test": "deno test"
+   },
+   "publish": {
+      "include": [
+         "README.md",
+         "deno.json",
+         "index.ts",
+         "GraphQLStandardSchema.ts",
+         "StandardSchemaV1.ts"
+      ],
+      "exclude": [
+         "GraphQLStandardSchema_test.ts"
+      ]
+   },
+   "imports": {
+      "@deno/dnt": "jsr:@deno/dnt@0.41.3",
+      "@std/assert": "jsr:@std/assert@1.0.11"
+   }
+}
