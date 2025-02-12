@@ -10,6 +10,15 @@ await build({
       // see JS docs for overview and more options
       deno: true,
    },
+   filterDiagnostic(diagnostic) {
+      if (
+        diagnostic.file?.fileName.contains("src/deps/jsr.io/@std/assert")
+      ) {
+        return false; // ignore all diagnostics in this file
+      }
+      // etc... more checks here
+      return true;
+    },
    package: {
       // package.json properties
       name: '@dreamit/graphql-std-schema',
