@@ -12,6 +12,7 @@
    "publish": {
       "include": [
          "README.md",
+         "LICENSE",
          "deno.json",
          "index.ts",
          "GraphQLStandardSchema.ts",

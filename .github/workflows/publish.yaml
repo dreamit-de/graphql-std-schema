@@ -1,15 +1,22 @@
-name: GraphQLStandardSchema
-on:
-   push:
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
 
-permissions: # added using https://github.com/step-security/secure-repo
+name: Node.js Package
+
+on:
+   release:
+      types: [released]
+
+permissions:
    contents: read
 
 jobs:
-   gqlstdschema:
+   publish-npm:
       runs-on: ubuntu-latest
+      permissions:
+         id-token: write
       steps:
-         - name: Harden the runner (Audit all outbound calls)
+         - name: Harden Runner
            uses: step-security/harden-runner@cb605e52c26070c328afc4562f0b4ada7618a84e # v2.10.4
            with:
               egress-policy: audit
@@ -28,6 +35,11 @@ jobs:
          - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
            with:
               node-version: '22.x'
-              registry-url: 'https://registry.npmjs.org'
+              registry-url: https://registry.npmjs.org/
          - name: Build and test npm module
            run: deno task dnt
+         - name: Publish to npm registry
+           working-directory: ./npm
+           run: npm publish --provenance --access public
+           env:
+              NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}

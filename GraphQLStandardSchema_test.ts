@@ -69,20 +69,6 @@ Deno.test('findIssues should find expected issues', () => {
       'GraphQL response should contain at least one of data or error field, but both are missing.',
    )
 
-   // Case: Both data and errors set and allowBothErrorsAndDataFields is false
-   assertEquals(
-      findIssues({ data: { message: 'data' }, errors: ['errors'] }).at(0)
-         ?.message,
-      'GraphQL response contains both data and errors fields but should contain only one of them.',
-   )
-   // Case: Both data and errors set and allowBothErrorsAndDataFields is true
-   assertEquals(
-      findIssues({ data: { message: 'data' }, errors: ['errors'] }, {
-         allowBothErrorsAndDataFields: true,
-      }).length,
-      0,
-   )
-
    // Case: Errors is set but empty
    assertEquals(
       findIssues({ errors: [] }).at(0)

@@ -16,7 +16,6 @@ TypeScript declarations are provided within the project.
 - Strings can be parsed to objects (see **parseStringToObject** option)
 - Checks/Validates if input is a valid [GraphQL][2] response
   - At least one of _data_ or _errors_ field exists
-  - _data_ and _errors_ fields should not exist at the same time (configurable)
   - _data_ needs to be an object
   - _errors_ needs to be an array
   - _errors_ should not be empty is it exists
@@ -37,8 +36,7 @@ The library exports one type and two functions.
   generating a Schema.
 - _ValidationOptions_: Interface for the Validation options.
 
-Three options are available to configure validation behavior. See interface
-below.
+Two options are available to configure validation behavior. See interface below.
 
 ```typescript
 export interface ValidationOptions {
@@ -47,12 +45,6 @@ export interface ValidationOptions {
     * this checks allows additional fields. According to GraphQL spec October 2021 this should not be the case.
     */
    allowAdditionalFieldsInResponse?: boolean
-
-   /**
-    * Defines if both "errors" and "data" fields are allowed in the response.
-    * According to GraphQL spec October 2021 this should not be the case.
-    */
-   allowBothErrorsAndDataFields?: boolean
 
    /**
     * If value is a string, define if it should be parsed to an object. Otherwise an issue will be created.

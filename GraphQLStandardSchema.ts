@@ -8,12 +8,6 @@ export interface ValidationOptions {
    allowAdditionalFieldsInResponse?: boolean
 
    /**
-    * Defines if both "errors" and "data" fields are allowed in the response.
-    * According to GraphQL spec October 2021 this should not be the case.
-    */
-   allowBothErrorsAndDataFields?: boolean
-
-   /**
     * If value is a string, define if it should be parsed to an object. Otherwise an issue will be created.
     */
    parseStringToObject?: boolean
@@ -36,14 +30,6 @@ export function findIssues(
       foundIssues.push({
          message:
             'GraphQL response should contain at least one of data or error field, but both are missing.',
-      })
-   } else if (
-      response.data && response.errors &&
-      (!options || !options.allowBothErrorsAndDataFields)
-   ) {
-      foundIssues.push({
-         message:
-            'GraphQL response contains both data and errors fields but should contain only one of them.',
       })
    }
 
