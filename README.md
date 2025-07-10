@@ -2,6 +2,8 @@
 
 [Standard Schema][1] for [GraphQL][2] response.
 
+**Deprecated**: This library will no longer be maintained. Use at your own risk!
+
 ## Installation
 
 ```sh

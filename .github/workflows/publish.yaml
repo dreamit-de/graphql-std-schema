@@ -40,6 +40,6 @@ jobs:
            run: deno task dnt
          - name: Publish to npm registry
            working-directory: ./npm
-           run: npm publish --provenance --access public
+           run: npm deprecate @dreamit/graphql-std-schema "@graphql-std-schema is deprecated and will no longer be maintained. Use at your own risk!"
            env:
               NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
